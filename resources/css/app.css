@@ -1,0 +1,215 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --color-brand-primary: #0e4197;
+    --color-brand-dark: #071b40;
+    --color-brand-light: #f0f4fe;
+    --color-brand-accent: #006dff;
+    --color-brand-cyan: #00d2ff;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        font-family: var(--font-sans);
+        color: #1e293b;
+    }
+}
+
+/* Custom glowing pulse and scan animations */
+@keyframes drone-hover {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+@keyframes rotor-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes radar-pulse {
+    0% {
+        r: 6;
+        opacity: 0.9;
+    }
+
+    100% {
+        r: 28;
+        opacity: 0;
+    }
+}
+
+@keyframes ticker-slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Skyshi-style Sky Atmosphere Keyframes */
+@keyframes hero-ring {
+    0% {
+        opacity: 0;
+        transform: scale(0.65);
+    }
+
+    30% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+@keyframes hero-drift-a {
+    0% {
+        transform: translateX(-350px);
+    }
+
+    100% {
+        transform: translateX(2000px);
+    }
+}
+
+@keyframes hero-drift-b {
+    0% {
+        transform: translateX(-300px);
+    }
+
+    100% {
+        transform: translateX(2000px);
+    }
+}
+
+/* Wind Turbine Smooth Rotor Spin */
+@keyframes turbine-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-turbine-spin {
+    transform-origin: 0px 0px;
+    animation: turbine-spin 7.5s linear infinite;
+}
+
+.animate-turbine-spin-slow {
+    transform-origin: 0px 0px;
+    animation: turbine-spin 12s linear infinite;
+}
+
+.animate-drone-hover {
+    animation: drone-hover 3.6s ease-in-out infinite;
+}
+
+@keyframes rotor-spin-ccw {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.animate-rotor {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: rotor-spin 0.2s linear infinite;
+}
+
+.animate-rotor-ccw {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: rotor-spin-ccw 0.2s linear infinite;
+}
+
+.animate-radar {
+    animation: radar-pulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.animate-ticker {
+    display: flex;
+    width: max-content;
+    animation: ticker-slide 32s linear infinite;
+}
+
+.animate-ticker:hover {
+    animation-play-state: paused;
+}
+
+.animate-hero-ring {
+    transform-origin: 960px 380px;
+    animation: hero-ring 5.5s cubic-bezier(0.1, 0.4, 0.2, 1) infinite;
+}
+
+.animate-hero-ring-late {
+    transform-origin: 960px 380px;
+    animation: hero-ring 5.5s cubic-bezier(0.1, 0.4, 0.2, 1) 2.75s infinite;
+}
+
+.animate-cloud-a {
+    animation: hero-drift-a 45s linear infinite;
+}
+
+.animate-cloud-b {
+    animation: hero-drift-b 65s linear infinite 18s;
+}
+
+/* Glassmorphism & Subtle Tech Gradients */
+.tech-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 16px 32px -8px rgba(14, 65, 151, 0.08), 0 4px 12px -2px rgba(14, 65, 151, 0.04);
+    transform: translateY(-3px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
